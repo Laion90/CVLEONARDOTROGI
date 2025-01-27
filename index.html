@@ -237,15 +237,15 @@
       }
     }
 
-    /*
-      FORZA la stampa di tutto il contenuto su più pagine.
-      Se la .container è molto alta, dividi in più pagine.
-      Soprattutto: rimuove overflow nascosti che potrebbero tagliare il contenuto.
-    */
+    /* Stampa */
     @media print {
       body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+      /* Nascondere nav e pulsante lingua in stampa */
+      nav, .language-switch {
+        display: none !important;
       }
       .container {
         overflow: visible !important;
@@ -254,7 +254,7 @@
         page-break-inside: avoid;
       }
       @page {
-        margin: 1cm; /* se vuoi margine ridotto */
+        margin: 1cm; /* margine di stampa */
       }
     }
   </style>
@@ -361,7 +361,7 @@
     </div>
 
     <div class="download">
-      <!-- Pulsante che aprirà la finestra di stampa (-> l'utente può salvare in PDF) -->
+      <!-- Pulsante che aprirà la finestra di stampa -->
       <button id="print-btn">Stampa / Salva in PDF</button>
     </div>
 
@@ -517,5 +517,6 @@
       window.print(); // Apre la finestra di stampa
     });
   </script>
+
 </body>
 </html>
