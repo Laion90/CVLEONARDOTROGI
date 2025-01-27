@@ -351,11 +351,15 @@
         </div>
     </div>
 
+    <!-- Libreria html2pdf.js da CDN (va bene anche inserirla nel <head>) -->
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
     <script>
         // Riferimenti ai link di navigazione e al bottone di cambio lingua
         const links = document.querySelectorAll('.nav-link');
         const languageSwitch = document.getElementById('language-switch');
         const content = document.getElementById('content');
+        const downloadBtn = document.getElementById('download-btn');
 
         // Testo in inglese da iniettare
         const englishContent = `
@@ -552,14 +556,16 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const section = document.querySelector(link.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Aggiunge e rimuove la classe "highlight"
-                section.classList.add('highlight');
-                setTimeout(() => section.classList.remove('highlight'), 1000);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Aggiunge e rimuove la classe "highlight"
+                    section.classList.add('highlight');
+                    setTimeout(() => section.classList.remove('highlight'), 1000);
 
-                // Gestione dello stato "active" nei link
-                links.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
+                    // Gestione dello stato "active" nei link
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
             });
         });
 
@@ -585,8 +591,7 @@
                 content.classList.remove('fade-in');
             }, 1000);
 
-            // Riassegna gli event listener per il nuovo contenuto
-            // (solo se vuoi che i link continuino a funzionare correttamente anche dopo il cambio lingua)
+            // Riassegna gli event listener per i link appena ricreati
             const newLinks = document.querySelectorAll('.nav-link');
             newLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -601,7 +606,32 @@
                     }
                 });
             });
+
+            // Riassegna l'event listener al bottone "Scarica CV in PDF" dopo il cambio lingua
+            const newDownloadBtn = document.getElementById('download-btn');
+            if (newDownloadBtn) {
+                newDownloadBtn.addEventListener('click', downloadPDF);
+            }
         });
+
+        // Funzione per generare il PDF
+        function downloadPDF(e) {
+            e.preventDefault();  // Evita che l'anchor segua l'href="#"
+            const element = document.getElementById('content');
+            const opt = {
+                margin:       1,
+                filename:     'Leonardo_Trogi_CV.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            // Genera il PDF
+            html2pdf().from(element).set(opt).save();
+        }
+
+        // Assegna l'evento al bottone di download iniziale
+        downloadBtn.addEventListener('click', downloadPDF);
     </script>
+
 </body>
 </html>
