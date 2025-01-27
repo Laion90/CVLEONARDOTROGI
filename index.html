@@ -19,41 +19,37 @@
     body {
       font-family: 'Open Sans', Arial, sans-serif;
       color: #333;
-      /* Sfumatura di sfondo */
       background: linear-gradient(to right, #e8f1f8, #f9fafc);
       scroll-behavior: smooth;
     }
 
-    /* Nav container (sticky) */
-    #navbar {
+    nav {
       background-color: #004085;
       color: #ffffff;
       padding: 15px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    /* Menu di navigazione */
-    #navbar ul {
+    nav ul {
       list-style: none;
       display: flex;
     }
-    #navbar ul li {
+    nav ul li {
       margin: 0 15px;
     }
-    #navbar ul li a {
+    nav ul li a {
       color: #ffffff;
       text-decoration: none;
       font-size: 1em;
       transition: color 0.3s, font-weight 0.3s;
     }
-    #navbar ul li a:hover,
-    #navbar ul li a.active {
+    nav ul li a:hover,
+    nav ul li a.active {
       font-weight: bold;
       color: #ffcc00;
       text-decoration: underline;
@@ -75,7 +71,7 @@
       color: #002952;
     }
 
-    /* Contenitore principale (il CV) */
+    /* Contenitore principale */
     .container {
       width: 90%;
       max-width: 900px;
@@ -201,7 +197,7 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      #navbar ul li {
+      nav ul li {
         margin: 0 8px;
       }
       .language-switch {
@@ -212,15 +208,16 @@
 
     /*
       Stampa -> nascondiamo:
-       - nav (il container #navbar)
-       - i pulsanti (lang switch / print)
+        - nav
+        - bottone lingua
+        - bottone stampa
     */
     @media print {
       body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      #navbar,
+      nav,
       .language-switch,
       .download {
         display: none !important;
@@ -239,8 +236,7 @@
 </head>
 <body>
 
-  <!-- Div che contiene la NAV in Italiano di default -->
-  <div id="navbar">
+  <nav>
     <ul>
       <li><a href="#summary" class="nav-link">Profilo</a></li>
       <li><a href="#formazione" class="nav-link">Formazione</a></li>
@@ -250,10 +246,10 @@
       <li><a href="#competenze" class="nav-link">Competenze</a></li>
     </ul>
     <button class="language-switch" id="language-switch">English Version</button>
-  </div>
+  </nav>
 
-  <!-- Contenuto in ITALIANO di default -->
   <div class="container" id="content">
+    <!-- CONTENUTO ITALIANO DI DEFAULT -->
     <h1>Leonardo Trogi</h1>
     <div class="contact">
       <p><strong>Indirizzo:</strong> Via Aretina 375, 50136 Firenze (Italia)</p>
@@ -348,51 +344,24 @@
   </div>
 
   <script>
-    // --- Selettori e funzioni di nav + highlight
-    // (Dopo che sostituiamo l'HTML, dovremo riassegnare questi event listener)
-    function initNavListeners() {
-      const links = document.querySelectorAll('.nav-link');
-      links.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = document.querySelector(link.getAttribute('href'));
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            section.classList.add('highlight');
-            setTimeout(() => section.classList.remove('highlight'), 1000);
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
+    // Link di navigazione: scroll + highlight
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          section.classList.add('highlight');
+          setTimeout(() => section.classList.remove('highlight'), 1000);
+
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
       });
-    }
+    });
 
-    // --- NAV ITALIANO e NAV INGLESE ---
-    const italianNav = `
-      <ul>
-        <li><a href="#summary" class="nav-link">Profilo</a></li>
-        <li><a href="#formazione" class="nav-link">Formazione</a></li>
-        <li><a href="#esperienze" class="nav-link">Esperienze</a></li>
-        <li><a href="#progetti" class="nav-link">Progetti</a></li>
-        <li><a href="#certificazioni" class="nav-link">Certificazioni</a></li>
-        <li><a href="#competenze" class="nav-link">Competenze</a></li>
-      </ul>
-      <button class="language-switch" id="language-switch">English Version</button>
-    `;
-
-    const englishNav = `
-      <ul>
-        <li><a href="#summary" class="nav-link">Profile</a></li>
-        <li><a href="#formazione" class="nav-link">Education</a></li>
-        <li><a href="#esperienze" class="nav-link">Experience</a></li>
-        <li><a href="#progetti" class="nav-link">Projects</a></li>
-        <li><a href="#certificazioni" class="nav-link">Certifications</a></li>
-        <li><a href="#competenze" class="nav-link">Skills</a></li>
-      </ul>
-      <button class="language-switch" id="language-switch">Versione Italiana</button>
-    `;
-
-    // --- CONTENUTO IN INGLESE ---
+    // Testo COMPLETO in inglese
     const englishContent = `
       <h1>Leonardo Trogi</h1>
       <div class="contact">
@@ -488,51 +457,34 @@
     `;
 
     // Salviamo la versione italiana di default
-    const navbarDiv = document.getElementById('navbar');
-    const italianNav = navbarDiv.innerHTML;
-
     const contentDiv = document.getElementById('content');
     const italianContent = contentDiv.innerHTML;
 
-    // Inizializzo i listeners
-    initNavListeners();
-
-    // Cambio lingua
+    // Bottone lingua
+    const languageSwitch = document.getElementById('language-switch');
     let currentLang = 'IT';
-    function switchLanguage() {
+
+    languageSwitch.addEventListener('click', () => {
       if (currentLang === 'IT') {
-        // Passa a EN
-        navbarDiv.innerHTML = englishNav;
         contentDiv.innerHTML = englishContent;
         currentLang = 'EN';
+        languageSwitch.textContent = 'Versione Italiana';
       } else {
-        // Torna a IT
-        navbarDiv.innerHTML = italianNav;
         contentDiv.innerHTML = italianContent;
         currentLang = 'IT';
+        languageSwitch.textContent = 'English Version';
       }
 
-      // Riassegna i listener di nav
-      initNavListeners();
-
-      // Riassegna l'evento al pulsante di lingua e di stampa
-      const langBtn = document.getElementById('language-switch');
-      if (langBtn) {
-        langBtn.addEventListener('click', switchLanguage);
-      }
-      const printBtn = document.getElementById('print-btn');
-      if (printBtn) {
-        printBtn.addEventListener('click', () => {
+      // Riassegna il listener al bottone di stampa
+      const newPrintBtn = document.getElementById('print-btn');
+      if (newPrintBtn) {
+        newPrintBtn.addEventListener('click', () => {
           window.print();
         });
       }
-    }
+    });
 
-    // Aggancio l'evento al bottone lingua
-    const langSwitchBtn = document.getElementById('language-switch');
-    langSwitchBtn.addEventListener('click', switchLanguage);
-
-    // Bottone di stampa iniziale
+    // Bottone stampa (Italiano di default)
     const printBtn = document.getElementById('print-btn');
     printBtn.addEventListener('click', () => {
       window.print();
