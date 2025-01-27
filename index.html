@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Curriculum Vitae - Leonardo Trogi</title>
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Esempio di font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 
   <style>
-    /* Reset di base */
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -19,7 +20,7 @@
     body {
       font-family: 'Open Sans', Arial, sans-serif;
       color: #333;
-      /* Sfumatura di sfondo */
+      /* Gradient background */
       background: linear-gradient(to right, #e8f1f8, #f9fafc);
       scroll-behavior: smooth;
     }
@@ -31,28 +32,24 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     nav ul {
       list-style: none;
       display: flex;
     }
-
     nav ul li {
       margin: 0 15px;
     }
-
     nav ul li a {
       color: #ffffff;
       text-decoration: none;
       font-size: 1em;
       transition: color 0.3s, font-weight 0.3s;
     }
-
     nav ul li a:hover,
     nav ul li a.active {
       font-weight: bold;
@@ -60,41 +57,20 @@
       text-decoration: underline;
     }
 
-    .language-switch {
-      background: #ffcc00;
-      color: #004085;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      border: 2px solid #003f7f;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .language-switch:hover {
-      background-color: #ffc107;
-      color: #002952;
-    }
-
     .container {
       width: 90%;
       max-width: 900px;
       margin: 40px auto;
-      background: #ffffff;
+      background: #fff;
       padding: 30px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       animation: fadeIn 1s ease forwards;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     h1, h2 {
@@ -102,12 +78,10 @@
       font-weight: 600;
       margin-bottom: 15px;
     }
-
     h1 {
       text-align: center;
       font-size: 2.2em;
     }
-
     .section-title {
       font-size: 1.5em;
       border-bottom: 2px solid #004085;
@@ -118,7 +92,6 @@
     .contact, .section, .footer {
       margin-bottom: 30px;
     }
-
     .contact p, .section p {
       margin: 5px 0;
       font-size: 0.95em;
@@ -129,33 +102,9 @@
       padding-left: 20px;
       margin-bottom: 10px;
     }
-
     ul li {
       margin: 5px 0;
       font-size: 0.95em;
-    }
-
-    /* Certificazioni con layout griglia */
-    .certifications {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .certification {
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background-color: #f9f9f9;
-      font-size: 0.9em;
-      text-align: center;
-    }
-
-    .certification h3 {
-      font-size: 1em;
-      color: #004085;
-      margin-bottom: 10px;
     }
 
     .summary {
@@ -174,9 +123,29 @@
       border: 1px solid #ddd;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-
     .projects h3 {
       font-size: 1.1em;
+      color: #004085;
+      margin-bottom: 10px;
+    }
+
+    .certifications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .certification {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background-color: #f9f9f9;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    .certification h3 {
+      font-size: 1em;
       color: #004085;
       margin-bottom: 10px;
     }
@@ -185,8 +154,7 @@
       text-align: center;
       margin-top: 30px;
     }
-
-    .download a {
+    .download button {
       text-decoration: none;
       background-color: #004085;
       color: #fff;
@@ -194,21 +162,11 @@
       border-radius: 5px;
       font-size: 1em;
       transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
-    .download a:hover {
+    .download button:hover {
       background-color: #003f7f;
-    }
-
-    .highlight {
-      animation: highlight 0.5s ease-out;
-    }
-    @keyframes highlight {
-      from {
-        background-color: #fffbcc;
-      }
-      to {
-        background-color: transparent;
-      }
     }
 
     .footer {
@@ -217,258 +175,198 @@
       color: #666;
     }
 
-    @media (max-width: 768px) {
-      nav ul li {
-          margin: 0 8px;
-      }
-      .language-switch {
-          font-size: 0.9em;
-          padding: 6px 12px;
-      }
+    .highlight {
+      animation: highlight 0.5s ease-out;
+    }
+    @keyframes highlight {
+      from { background-color: #fffbcc; }
+      to   { background-color: transparent; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
+<nav>
+  <ul>
+    <li><a href="#summary" class="nav-link">Profilo</a></li>
+    <li><a href="#formazione" class="nav-link">Formazione</a></li>
+    <li><a href="#esperienze" class="nav-link">Esperienze</a></li>
+    <li><a href="#progetti" class="nav-link">Progetti</a></li>
+    <li><a href="#certificazioni" class="nav-link">Certificazioni</a></li>
+    <li><a href="#competenze" class="nav-link">Competenze</a></li>
+  </ul>
+</nav>
+
+<div class="container" id="content">
+  <!-- Il tuo CV esattamente come vuoi venga catturato -->
+  <h1>Leonardo Trogi</h1>
+  <div class="contact">
+    <p><strong>Indirizzo:</strong> Via Aretina 375, 50136 Firenze (Italia)</p>
+    <p><strong>Cellulare:</strong> 3337192024</p>
+    <p><strong>Email:</strong> LeonardoTrogi@gmail.com</p>
+  </div>
+
+  <div id="summary" class="summary">
+    <p><strong>Consulente applicativo e Data Analyst</strong> con esperienza in gestione e integrazione di sistemi ERP, sviluppo di soluzioni personalizzate con SQL Server e analisi dati avanzata. Appassionato di Business Intelligence e ottimizzazione dei processi aziendali per migliorare l'efficienza operativa e supportare decisioni strategiche.</p>
+  </div>
+
+  <div id="formazione" class="section">
+    <h2 class="section-title">Formazione</h2>
     <ul>
-      <li><a href="#summary" class="nav-link">Profilo</a></li>
-      <li><a href="#formazione" class="nav-link">Formazione</a></li>
-      <li><a href="#esperienze" class="nav-link">Esperienze</a></li>
-      <li><a href="#progetti" class="nav-link">Progetti</a></li>
-      <li><a href="#certificazioni" class="nav-link">Certificazioni</a></li>
-      <li><a href="#competenze" class="nav-link">Competenze</a></li>
+      <li><strong>2022:</strong> Corso Avanzato SQL Server 2019 - SoftPI</li>
+      <li><strong>2015-2017:</strong> Master in Auditing, Finanza e Controllo - Università di Pisa</li>
+      <li><strong>2010-2015:</strong> Laurea Triennale in Economia e Commercio - Università di Firenze</li>
     </ul>
-    <!-- Bottone visibile e più grande per lo switch di lingua -->
-    <button class="language-switch" id="language-switch">English Version</button>
-  </nav>
+  </div>
 
-  <div class="container" id="content">
-    <!-- Contenuto Italiano di default -->
-    <h1>Leonardo Trogi</h1>
-    <div class="contact">
-        <p><strong>Indirizzo:</strong> Via Aretina 375, 50136 Firenze (Italia)</p>
-        <p><strong>Cellulare:</strong> 3337192024</p>
-        <p><strong>Email:</strong> LeonardoTrogi@gmail.com</p>
-    </div>
+  <div id="esperienze" class="section">
+    <h2 class="section-title">Esperienze Professionali</h2>
+    <ul>
+      <li><strong>System Line SRL (Feb 2022 - Presente):</strong>
+        <ul>
+          <li>Consulente applicativo per Teamsystem Alyante e CRM</li>
+          <li>Gestione database e integrazioni SQL Server</li>
+          <li>Esposizione dati per strumenti BI (QlikView, Power BI)</li>
+          <li>Supporto tecnico e sviluppo di soluzioni personalizzate per clienti</li>
+        </ul>
+      </li>
+      <li><strong>Italiana Servizi S.p.A (2019-2022):</strong>
+        <ul>
+          <li>Business Analyst e SQL Expert</li>
+          <li>Building Manager</li>
+          <li>Ottimizzazione dei processi aziendali tramite analisi dati</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
-    <div id="summary" class="summary">
-        <p><strong>Consulente applicativo e Data Analyst</strong> con esperienza in gestione e integrazione di sistemi ERP, sviluppo di soluzioni personalizzate con SQL Server e analisi dati avanzata. Appassionato di Business Intelligence e ottimizzazione dei processi aziendali per migliorare l'efficienza operativa e supportare decisioni strategiche.</p>
-    </div>
-
-    <div id="formazione" class="section">
-      <h2 class="section-title">Formazione</h2>
+  <div id="progetti" class="section">
+    <h2 class="section-title">Progetti Significativi</h2>
+    <div class="projects">
+      <h3>Progetti Tecnici:</h3>
       <ul>
-          <li><strong>2022:</strong> Corso Avanzato SQL Server 2019 - SoftPI</li>
-          <li><strong>2015-2017:</strong> Master in Auditing, Finanza e Controllo - Università di Pisa</li>
-          <li><strong>2010-2015:</strong> Laurea Triennale in Economia e Commercio - Università di Firenze</li>
+        <li>Progettato e implementato un'integrazione tra SQL Server e CRM, riducendo i tempi di elaborazione dati del 30%.</li>
+        <li>Creato dashboard BI personalizzate con Power BI per il monitoraggio delle performance aziendali.</li>
+        <li>Automatizzato processi di estrazione dati con script Python e integrazioni API REST.</li>
       </ul>
-    </div>
-
-    <div id="esperienze" class="section">
-      <h2 class="section-title">Esperienze Professionali</h2>
-      <ul>
-          <li><strong>System Line SRL (Feb 2022 - Presente):</strong>
-              <ul>
-                  <li>Consulente applicativo per Teamsystem Alyante e CRM</li>
-                  <li>Gestione database e integrazioni SQL Server</li>
-                  <li>Esposizione dati per strumenti BI (QlikView, Power BI)</li>
-                  <li>Supporto tecnico e sviluppo di soluzioni personalizzate per clienti</li>
-              </ul>
-          </li>
-          <li><strong>Italiana Servizi S.p.A (2019-2022):</strong>
-              <ul>
-                  <li>Business Analyst e SQL Expert</li>
-                  <li>Building Manager</li>
-                  <li>Ottimizzazione dei processi aziendali tramite analisi dati</li>
-              </ul>
-          </li>
-      </ul>
-    </div>
-
-    <div id="progetti" class="section">
-      <h2 class="section-title">Progetti Significativi</h2>
-      <div class="projects">
-          <h3>Progetti Tecnici:</h3>
-          <ul>
-              <li>Progettato e implementato un'integrazione tra SQL Server e CRM, riducendo i tempi di elaborazione dati del 30%.</li>
-              <li>Creato dashboard BI personalizzate con Power BI per il monitoraggio delle performance aziendali.</li>
-              <li>Automatizzato processi di estrazione dati con script Python e integrazioni API REST.</li>
-          </ul>
-      </div>
-    </div>
-
-    <div id="certificazioni" class="section">
-      <h2 class="section-title">Certificazioni Teamsystem</h2>
-      <div class="certifications">
-          <div class="certification">
-              <h3>TS Enterprise CRM - Installazione, Sales e Marketing</h3>
-          </div>
-          <div class="certification">
-              <h3>TS Enterprise CRM - Customer Service e Funzionalità Avanzate</h3>
-          </div>
-          <div class="certification">
-              <h3>TS Manufacturing - Factory Control</h3>
-          </div>
-          <div class="certification">
-              <h3>TS Industry 4.0 - WMS</h3>
-          </div>
-      </div>
-    </div>
-
-    <div id="competenze" class="section">
-      <h2 class="section-title">Competenze Tecniche</h2>
-      <ul>
-          <li>SQL Server: Sviluppo e ottimizzazione</li>
-          <li>Business Intelligence: Qlik Sense, Power BI</li>
-          <li>Integrazione API REST e automazione</li>
-          <li>Programmazione: Python, HTML, CSS</li>
-          <li>Cloud Computing: Conoscenza di base di Azure e AWS</li>
-          <li>Version Control: Git</li>
-          <li>Office: Excel avanzato</li>
-      </ul>
-    </div>
-
-    <div class="download">
-      <a href="#" id="download-btn">Scarica CV in PDF</a>
-    </div>
-
-    <div class="footer">
-      <p>Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 30 giugno 2003, n. 196.</p>
     </div>
   </div>
 
-  <!-- Libreria html2pdf.js da CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
-  <!-- Libreria html2canvas da CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <!-- Libreria jsPDF da CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <div id="certificazioni" class="section">
+    <h2 class="section-title">Certificazioni Teamsystem</h2>
+    <div class="certifications">
+      <div class="certification">
+        <h3>TS Enterprise CRM - Installazione, Sales e Marketing</h3>
+      </div>
+      <div class="certification">
+        <h3>TS Enterprise CRM - Customer Service e Funzionalità Avanzate</h3>
+      </div>
+      <div class="certification">
+        <h3>TS Manufacturing - Factory Control</h3>
+      </div>
+      <div class="certification">
+        <h3>TS Industry 4.0 - WMS</h3>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    // Riferimenti
-    const links = document.querySelectorAll('.nav-link');
-    const languageSwitch = document.getElementById('language-switch');
-    const content = document.getElementById('content');
-    const downloadBtn = document.getElementById('download-btn');
+  <div id="competenze" class="section">
+    <h2 class="section-title">Competenze Tecniche</h2>
+    <ul>
+      <li>SQL Server: Sviluppo e ottimizzazione</li>
+      <li>Business Intelligence: Qlik Sense, Power BI</li>
+      <li>Integrazione API REST e automazione</li>
+      <li>Programmazione: Python, HTML, CSS</li>
+      <li>Cloud Computing: Conoscenza di base di Azure e AWS</li>
+      <li>Version Control: Git</li>
+      <li>Office: Excel avanzato</li>
+    </ul>
+  </div>
 
-    // Contenuto in Inglese
-    const englishContent = `
-      <!-- QUI inserisci ESATTAMENTE lo stesso HTML, ma in inglese -->
-      <!-- ... omesso per brevità, uguale al tuo con la traduzione ... -->
-    `;
+  <div class="footer">
+    <p>Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 30 giugno 2003, n. 196.</p>
+  </div>
 
-    // Contenuto in Italiano
-    const italianContent = document.getElementById('content').innerHTML; 
-    // Salviamo il markup originale in una variabile, per ripristinarlo se torniamo a IT
+  <div class="download">
+    <button id="downloadPDF">Scarica PDF Fedele</button>
+  </div>
+</div>
 
-    // Scroll + highlight
-    links.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const section = document.querySelector(link.getAttribute('href'));
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          section.classList.add('highlight');
-          setTimeout(() => section.classList.remove('highlight'), 1000);
-          links.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
-    });
+<!-- 1) Libreria dom-to-image-more -->
+<script src="https://cdn.jsdelivr.net/gh/1904labs/dom-to-image-more/dist/dom-to-image-more.min.js"></script>
+<!-- 2) Libreria jsPDF (versione UMD) -->
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
-    // Switch lingua
-    let currentLang = 'IT';
-    languageSwitch.addEventListener('click', () => {
-      if (currentLang === 'IT') {
-        // Passa all'inglese
-        content.innerHTML = englishContent;
-        content.classList.add('fade-in');
-        currentLang = 'EN';
-        languageSwitch.textContent = 'Versione Italiana';
-      } else {
-        // Torna all'italiano
-        content.innerHTML = italianContent;
-        content.classList.add('fade-in');
-        currentLang = 'IT';
-        languageSwitch.textContent = 'English Version';
-      }
-
-      setTimeout(() => {
-        content.classList.remove('fade-in');
-      }, 1000);
-
-      // Riassegna nav e download
-      const newLinks = document.querySelectorAll('.nav-link');
-      newLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = document.querySelector(link.getAttribute('href'));
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            section.classList.add('highlight');
-            setTimeout(() => section.classList.remove('highlight'), 1000);
-            newLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
-      });
-
-      const newDownloadBtn = document.getElementById('download-btn');
-      if (newDownloadBtn) {
-        newDownloadBtn.addEventListener('click', downloadPDF);
-      }
-    });
-
-    // Funzione per generare PDF
-    function downloadPDF(e) {
+<script>
+  // Link di navigazione smooth
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
-      const element = document.getElementById('content');
+      const section = document.querySelector(link.getAttribute('href'));
+      if(section) {
+        section.scrollIntoView({behavior: 'smooth', block: 'center'});
+        section.classList.add('highlight');
+        setTimeout(()=>section.classList.remove('highlight'),1000);
+        links.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  });
 
-      // Disabilita temporaneamente alcuni stili che potrebbero causare problemi
-      const originalStyles = {};
-      const elementsWithSticky = document.querySelectorAll('*');
-      elementsWithSticky.forEach(el => {
-        if (window.getComputedStyle(el).position === 'sticky') {
-          originalStyles[el] = el.style.position;
-          el.style.position = 'static';
+  // Bottone per scaricare
+  const downloadBtn = document.getElementById('downloadPDF');
+  downloadBtn.addEventListener('click', async () => {
+    const { jsPDF } = window.jspdf; // Import da UMD
+    const content = document.getElementById('content');
+
+    try {
+      // 1) Usa domToImageMore per catturare il div in PNG ad alta risoluzione
+      const dataUrl = await domtoimage.toPng(content, {
+        quality: 1,
+        bgColor: null,         // cerca di mantenere background
+        style: { 'transform': 'scale(2)', 'transform-origin': 'top left' }, 
+        // scale(2) raddoppia la risoluzione, puoi provare scale(3) se vuoi
+        filter: (node) => {
+          // Esempio: se vuoi escludere qualcosa, return false
+          return true;
         }
       });
 
-      // Opzioni per html2pdf
-      const opt = {
-        margin: 0.5,
-        filename: 'Leonardo_Trogi_CV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 3, // Aumenta la risoluzione
-          useCORS: true, // Permette il caricamento di immagini esterne
-          logging: true, // Abilita il logging per debug
-          allowTaint: true, // Permette il rendering di contenuti esterni
-          backgroundColor: '#FFFFFF', // Imposta uno sfondo bianco
-        },
-        jsPDF: {
-          unit: 'in',
-          format: 'letter',
-          orientation: 'portrait'
-        }
-      };
+      // 2) Crea PDF con dimensione A4 in verticale
+      const pdf = new jsPDF('p', 'pt', 'a4');
+      // Larghezza e altezza in punti (A4 = 595.28 x 841.89 pt)
+      const pageWidth = 595.28;
+      const pageHeight = 841.89;
 
-      // Aggiungi un ritardo per assicurarti che il contenuto sia completamente renderizzato
-      setTimeout(() => {
-        html2pdf().from(element).set(opt).save().then(() => {
-          // Ripristina gli stili originali dopo la generazione del PDF
-          elementsWithSticky.forEach(el => {
-            if (originalStyles[el]) {
-              el.style.position = originalStyles[el];
-            }
-          });
-        });
-      }, 1000); // Ritardo di 1 secondo per il rendering
+      // Carica immagine nella prima pagina
+      // ridimensiona l'immagine alla larghezza della pagina
+      // Calcola un ratio:
+      const img = new Image();
+      img.src = dataUrl;
+      await img.decode(); // aspetta che l'immagine sia caricata
+
+      const imgWidth = img.width;   // dimensioni reali dell'immagine
+      const imgHeight = img.height;
+
+      // Rapporto immagine
+      const ratio = imgHeight / imgWidth; 
+      const pdfWidth = pageWidth;   // vogliamo che l'immagine occupi tutta la larghezza della pagina
+      const pdfHeight = pdfWidth * ratio;
+
+      // Se l'altezza eccede la pagina A4, verrà comunque tagliata in fondo
+      // (Se vuoi gestire più pagine, serve un algoritmo di slicing più complesso)
+      pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+      // 3) Salva
+      pdf.save("Leonardo_Trogi_CV.pdf");
+
+    } catch (error) {
+      console.error("Errore nella generazione PDF:", error);
+      alert("Si è verificato un errore nella creazione del PDF.");
     }
+  });
+</script>
 
-    // Aggiungi l'event listener al pulsante di download
-    document.getElementById('download-btn').addEventListener('click', downloadPDF);
-  </script>
 </body>
 </html>
